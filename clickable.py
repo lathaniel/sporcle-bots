@@ -1,4 +1,5 @@
 from selenium import webdriver
+import time
 
 
 def main():
@@ -12,13 +13,13 @@ def main():
     driver.get('https://www.sporcle.com/games/RobPro/1-100-click-me')
 
     # Wait for me to login
-    input('Press enter once you have logged in')
+    input('Press ENTER once you have logged in')
 
     start_btn = driver.find_element_by_link_text('PLAY QUIZ')
     start_btn.click()
 
     if desired_remaining_secs > 0:
-        driver.implicitly_wait(start_timer_secs - desired_remaining_secs)
+        time.sleep((start_timer_secs - desired_remaining_secs) - 10)
 
     for i in range(100):
         driver.find_element_by_id(f'slot{i}').click()
